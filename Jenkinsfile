@@ -1,46 +1,19 @@
 
-pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Udogerenew/demo4.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building the project...'
-                // Example: run build command
-                sh 'echo "Build step completed"'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Example: run test command
-                sh 'echo "Tests executed successfully"'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                // Example: deploy command
-                sh 'echo "Deployment completed"'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
+stage('Build') {
+    steps {
+        echo 'Building the project...'
+        bat 'echo Build step completed'
     }
 }
-
+stage('Test') {
+    steps {
+        echo 'Running tests...'
+        bat 'echo Tests executed successfully'
+    }
+}
+stage('Deploy') {
+    steps {
+        echo 'Deploying application...'
+        bat 'echo Deployment completed'
+    }
+}
